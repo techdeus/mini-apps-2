@@ -25,7 +25,6 @@ body {
 }
 
 .title {
-    width: 80%;
     text-align: center;
     font-size: 18px;
     color: white;
@@ -37,6 +36,7 @@ body {
 form {
     padding-bottom: 40px;
     width: 100%;
+    text-align: center;
 }
 
 .searchBox {
@@ -51,6 +51,9 @@ form {
 
 .events {
     width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 .entry {
@@ -75,6 +78,7 @@ form {
     color: black;
     text-align: center;
     text-overflow: ellipsis;
+    word-break: break-all;
 }
 
 .category {
@@ -106,4 +110,9 @@ form {
     position: absolute;
     text-decoration: none;
     right: 5px;
+}
+
+.pagination {
+    display: flex !important;
+    justify-content: center;
 }
