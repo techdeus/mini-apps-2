@@ -116,3 +116,10 @@ form {
     display: flex !important;
     justify-content: center;
 }
+
+.editTextBox {
+    font-size: 14px;
+    resize: none;
+}
+
+
