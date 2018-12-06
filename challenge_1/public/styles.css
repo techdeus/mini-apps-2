@@ -1,0 +1,109 @@
+body {
+    background: #abbaab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+} 
+
+#react-paginate ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+    justify-content: center;
+}
+
+#react-paginate li {
+    display: inline-block;
+    justify-content: center;
+}
+
+.container {
+    margin: 8px auto;
+    width: 700px;
+}
+
+.title {
+    width: 80%;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    font: 400 75px/1.5 'Pacifico', Helvetica, sans-serif;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1), 7px 7px 0px rgba(0, 0, 0, 0.05);
+    padding-bottom: 50px;
+}
+
+form {
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+.searchBox {
+    width: 80%;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+
+
+.events {
+    width: 100%;
+}
+
+.entry {
+    width: 80%;
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px 2px #6d7170;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+    background-color: yellowgreen;
+    text-overflow: ellipsis;
+}
+
+.date {
+    font-size: 18px;
+    color:cornflowerblue;
+    text-align: center;
+}
+
+.description {
+    display: block;
+    font-size: 14px;
+    color: black;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.category {
+    font-size: 18px;
+    color: brown;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.language {
+    font-size: 18px;
+    color: yellow;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.resultContainer {
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+
+.comDisplayNone {
+    display: none;
+}
+
+.comEditButton {
+    display: inline;
+    position: absolute;
+    text-decoration: none;
+    right: 5px;
+}
