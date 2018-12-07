@@ -1,16 +1,16 @@
 import React from 'react';
 
-const ChooseDate = ({handleCalendarDateChange, handleCalendarDateSubmit}) => (
+const ChooseDate = ({handleCalendarDateSubmit}) => (
     <div className="formComponents">
-    <form>
+    <form onSubmit={handleCalendarDateSubmit}>
         <label>Start Date:
-            <input id="start" type="date" onChange={handleCalendarDateChange}></input>
+            <input id="start" type="date"></input>
         </label>
 
         <label>To Date:
-            <input id ="end" type="date" onChange={handleCalendarDateChange}></input>
+            <input id ="end" type="date"></input>
         </label>
-        <button type="button" onClick={handleCalendarDateSubmit}>Filter</button>
+        <button type="submit">Filter</button>
     </form>
 </div>
 )

@@ -20,16 +20,12 @@ class App extends Component {
                 priceResults: [],
                 type: 'bar',
                 date: [formatWeek, currDate],
-                startDate: '',
-                endDate: '',
                 disclaimer: 'This data was produced from the CoinDesk Bitcoin Price Index. BPI value data returned as USD',
             }
         this.fetchPrices = this.fetchPrices.bind(this);
-        this.fetchPricesCalendar = this.fetchPricesCalendar.bind(this);
         this.renderChart = this.renderChart.bind(this);
         this.handleGraphTypeChange = this.handleGraphTypeChange.bind(this);
         this.handleGraphDateChange = this.handleGraphDateChange.bind(this);
-        this.handleCalendarDateChange = this.handleCalendarDateChange.bind(this);
         this.handleCalendarDateSubmit = this.handleCalendarDateSubmit.bind(this);
     }
 
@@ -63,28 +59,6 @@ class App extends Component {
         }
     };
 
-    async fetchPricesCalendar() {
-        const { startDate, endDate } = this.state;
-        try {
-            const response = await Axios.get(`/getPrices`, {
-                params: {
-                    date: [startDate, endDate],
-                }
-            });
-            if (response) {
-                const priceData = await response.data;
-                this.setState(
-                    { priceResults: priceData }, 
-                    () => this.renderChart()
-                );
-            } else {
-                throw new Error(response.statusText);
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
     handleGraphTypeChange(event) {
         this.setState({
             type: event.target.value
@@ -93,19 +67,14 @@ class App extends Component {
         })
     };
 
-    handleCalendarDateChange(event) {
-        let startDate, endDate;
-        if (event.target.id === 'start') {
-            startDate = event.target.value;
-            this.setState({ startDate: startDate });
-        } else {
-            endDate = event.target.value;
-            this.setState({ endDate: endDate });
-        }
-    };
-
     handleCalendarDateSubmit(event) {
-        this.fetchPricesCalendar();
+        
+        event.preventDefault();
+        let dataArr = [];
+        let startDate = event.target[0].value;
+        let endDate = event.target[1].value;
+        dataArr.push(startDate, endDate);
+        this.setState({date: dataArr}, () => this.fetchPrices());
     };
 
     handleGraphDateChange(event) {
@@ -155,7 +124,7 @@ class App extends Component {
         this.setState({
             date: dateArr
         }, () => {
-            this.fetchPrices(dateArr);
+            this.fetchPrices();
         })
     };
 
@@ -213,7 +182,7 @@ class App extends Component {
                         <div className="formContainer2">
                             <GraphType handleGraphTypeChange={this.handleGraphTypeChange} />
                             <GraphDate handleGraphDateChange={this.handleGraphDateChange} />
-                            <ChooseDate handleCalendarDateChange={this.handleCalendarDateChange} handleCalendarDateSubmit={this.handleCalendarDateSubmit} />
+                            <ChooseDate handleCalendarDateSubmit={this.handleCalendarDateSubmit} />
                         </div>
                     </div>
                     <div className="disclaimer">
