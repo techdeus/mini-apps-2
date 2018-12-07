@@ -68,7 +68,6 @@ class App extends Component {
     };
 
     handleCalendarDateSubmit(event) {
-        
         event.preventDefault();
         let dataArr = [];
         let startDate = event.target[0].value;
