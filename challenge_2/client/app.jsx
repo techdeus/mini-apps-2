@@ -4,11 +4,14 @@ import Navbar from './Navbar.jsx';
 import Chart from 'chart.js';
 import GraphType from './graphType.jsx';
 import GraphDate from './graphDate.jsx';
+import ChooseDate from './chooseDate.jsx';
 import helpers from '../helpers/helpers.js';
 import Axios from 'axios';
 import Moment from 'moment';
 
 const currDate = Moment(new Date()).format('YYYY-MM-DD');
+const week = ( d => new Date(d.setDate(d.getDate()-7)) )(new Date);
+const formatWeek = Moment(week).format('YYYY-MM-DD');
 
 class App extends Component {
     constructor(props) {
@@ -16,13 +19,18 @@ class App extends Component {
             this.state = {
                 priceResults: [],
                 type: 'bar',
-                date: [currDate, currDate],
+                date: [formatWeek, currDate],
+                startDate: '',
+                endDate: '',
                 disclaimer: 'This data was produced from the CoinDesk Bitcoin Price Index. BPI value data returned as USD',
             }
         this.fetchPrices = this.fetchPrices.bind(this);
+        this.fetchPricesCalendar = this.fetchPricesCalendar.bind(this);
         this.renderChart = this.renderChart.bind(this);
         this.handleGraphTypeChange = this.handleGraphTypeChange.bind(this);
         this.handleGraphDateChange = this.handleGraphDateChange.bind(this);
+        this.handleCalendarDateChange = this.handleCalendarDateChange.bind(this);
+        this.handleCalendarDateSubmit = this.handleCalendarDateSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -55,12 +63,49 @@ class App extends Component {
         }
     };
 
+    async fetchPricesCalendar() {
+        const { startDate, endDate } = this.state;
+        try {
+            const response = await Axios.get(`/getPrices`, {
+                params: {
+                    date: [startDate, endDate],
+                }
+            });
+            if (response) {
+                const priceData = await response.data;
+                this.setState(
+                    { priceResults: priceData }, 
+                    () => this.renderChart()
+                );
+            } else {
+                throw new Error(response.statusText);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     handleGraphTypeChange(event) {
         this.setState({
             type: event.target.value
         }, () => {
             this.renderChart();
         })
+    };
+
+    handleCalendarDateChange(event) {
+        let startDate, endDate;
+        if (event.target.id === 'start') {
+            startDate = event.target.value;
+            this.setState({ startDate: startDate });
+        } else {
+            endDate = event.target.value;
+            this.setState({ endDate: endDate });
+        }
+    };
+
+    handleCalendarDateSubmit(event) {
+        this.fetchPricesCalendar();
     };
 
     handleGraphDateChange(event) {
@@ -168,6 +213,7 @@ class App extends Component {
                         <div className="formContainer2">
                             <GraphType handleGraphTypeChange={this.handleGraphTypeChange} />
                             <GraphDate handleGraphDateChange={this.handleGraphDateChange} />
+                            <ChooseDate handleCalendarDateChange={this.handleCalendarDateChange} handleCalendarDateSubmit={this.handleCalendarDateSubmit} />
                         </div>
                     </div>
                     <div className="disclaimer">

@@ -1,11 +1,10 @@
 import React from 'react';
 
 const GraphDate = ({ handleGraphDateChange }) => (
-    
     <div className="formComponents">
         <label>
             Date Range: 
-            <select id="date" className="select" onChange={handleGraphDateChange}>
+            <select id="date" className="select" defaultValue="week" onChange={handleGraphDateChange}>
                 <option value="today">Today</option>
                 <option value="yesterday">Yesterday</option>
                 <option value="week">Last Week</option>
