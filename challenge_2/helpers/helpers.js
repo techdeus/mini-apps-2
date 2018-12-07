@@ -8,7 +8,6 @@ const genRandomColors = (number) => {
    let colors = [];
    for (var i = 0; i < number; i++) {
     let ranNumber = Math.floor((Math.random() * 3) + 1);
-    console.log(ranNumber);
     colors.push(`rgba(${random[ranNumber]})`);
    }
    return colors;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Navbar from './Navbar.jsx';
 import Chart from 'chart.js';
 import GraphType from './graphType.jsx';
 import GraphDate from './graphDate.jsx';
@@ -152,20 +153,26 @@ class App extends Component {
     render() {
         const { disclaimer } = this.state;
         return (
-            <div className="container">
-              <div className="title">Cryptocurrency Charting Tool</div>
-                <div className="chart">
-                    <canvas 
-                        style={{width: 100, height: 100}}
-                        ref={node => (this.node = node)}
-                    />
-                </div>
-                <div className="formContainer">
-                    <GraphType handleGraphTypeChange={this.handleGraphTypeChange} />
-                    <GraphDate handleGraphDateChange={this.handleGraphDateChange} />
-                </div>
-                <div className="disclaimer">
-                    {disclaimer}
+            <div>
+                <Navbar />
+                <div className="container">
+                
+                <div className="title">Cryptocurrency Charting Tool</div>
+                    <div className="chart">
+                        <canvas 
+                            style={{width: 100, height: 100}}
+                            ref={node => (this.node = node)}
+                        />
+                    </div>
+                    <div className="formContainer">
+                        <div className="formContainer2">
+                            <GraphType handleGraphTypeChange={this.handleGraphTypeChange} />
+                            <GraphDate handleGraphDateChange={this.handleGraphDateChange} />
+                        </div>
+                    </div>
+                    <div className="disclaimer">
+                        {disclaimer}
+                    </div>
                 </div>
             </div>
         )

@@ -11,6 +11,8 @@ body {
 .container {
     margin: 8px auto;
     width: 900px;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .title {
@@ -22,7 +24,7 @@ body {
 }
 
 .chart {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -30,11 +32,12 @@ body {
 }
 
 .formContainer {
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    padding-bottom: 20px;
+    width: 20%;
+}
+.formContainer2 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .formComponents {
