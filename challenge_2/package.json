@@ -1,0 +1,42 @@
+{
+  "name": "challenge_2",
+  "version": "1.0.0",
+  "description": "Mini-Apps 2: Cryptocurrency charting tool...",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react-dev": "webpack -d --watch",
+    "start": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/techdeus/hrsf104-mini-apps-2/tree/master/challenge_2"
+  },
+  "author": "Marlon Sullivan",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@babel/runtime": "^7.2.0",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "chart.js": "^2.7.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "moment": "^2.22.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.7",
+    "path": "^0.12.7",
+    "pm2": "^3.2.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  }
+}

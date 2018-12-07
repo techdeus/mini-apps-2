@@ -1,0 +1,5 @@
+## Ignore the bundle
+public/bundle.js
+
+## Ignore the secret sensitive password storage file
+.env
